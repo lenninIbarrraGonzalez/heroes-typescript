@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { HeroesApp } from './HeroesApp';
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <HeroesApp />
+    <BrowserRouter>
+      <HeroesApp />
+    </BrowserRouter>
   </React.StrictMode>,
 );
 

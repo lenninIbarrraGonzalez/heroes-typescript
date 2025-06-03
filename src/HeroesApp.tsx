@@ -1,3 +1,5 @@
+import { AppRoutes } from './router/AppRoutes';
+
 export const HeroesApp = () => {
-  return <h1>HeroesApp</h1>;
+  return <AppRoutes />;
 };
