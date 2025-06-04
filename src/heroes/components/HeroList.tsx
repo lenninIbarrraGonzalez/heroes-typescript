@@ -1,6 +1,7 @@
+import { Hero } from '../interfaces/Hero';
+import { HeroCard } from './HeroCard';
 import { getHeroesByPublisher } from '../helpers';
 import { Publisher } from '../types/Publisher';
-import { Hero } from '../interfaces/Hero';
 
 interface HeroListProps {
   publisher: Publisher;
@@ -12,10 +13,10 @@ export const HeroList: React.FC<HeroListProps> = ({ publisher }) => {
   console.log(heroes);
 
   return (
-    <ul>
+    <div className="row rows-cols-1 row-cols-md-3 g-3">
       {heroes.map((hero) => (
-        <li key={hero.id}>{hero?.superhero}</li>
+        <HeroCard key={hero.id} {...hero} />
       ))}
-    </ul>
+    </div>
   );
 };
