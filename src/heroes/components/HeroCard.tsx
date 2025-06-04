@@ -7,8 +7,6 @@ export const HeroCard = (hero: Hero) => {
 
   const heroImageUrl = `/assets/heroes/${id}.jpg`;
 
-  console.log(heroImageUrl);
-
   return (
     <div className="col">
       <div className="card">

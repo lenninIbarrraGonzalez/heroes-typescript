@@ -10,8 +10,6 @@ interface HeroListProps {
 export const HeroList: React.FC<HeroListProps> = ({ publisher }) => {
   const heroes: Hero[] = getHeroesByPublisher(publisher);
 
-  console.log(heroes);
-
   return (
     <div className="row rows-cols-1 row-cols-md-3 g-3">
       {heroes.map((hero) => (
