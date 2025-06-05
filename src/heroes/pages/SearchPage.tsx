@@ -18,20 +18,24 @@ export const SearchPage = () => {
   //obtener información de la ubicación actual
   const location = useLocation();
   //libreria para parsear la ruta query-string
+
   const query = queryString.parse(location.search);
   const { q = '' } = query;
 
   const heroes = getHeroByName(typeof q === 'string' ? q : '');
 
+  console.log({ heroes });
+
   const { formState, onInputChange } = useForm<SearchFormState>({
     searchText: typeof q === 'string' ? q : '',
   });
+
   const { searchText } = formState;
 
   const onSearchSubmit = (e: SearchSubmitEvent): void => {
     e.preventDefault();
 
-    if (searchText.trim().length <= 1) return;
+    // if (searchText.trim().length <= 1) return;
     navigate(`?q=${searchText}`);
   };
 
@@ -63,10 +67,19 @@ export const SearchPage = () => {
         <div className="col-7">
           <h4>Results</h4>
           <hr />
-          <div className="alert alert-primary">Search a hero</div>
-          <div className="alert alert-danger">
-            No hero whit <b>{q}</b>
-          </div>
+
+          {q === '' && (
+            <div className="alert alert-primary animate__animated animate__fadeIn">
+              Search a hero
+            </div>
+          )}
+
+          {q !== '' && heroes.length === 0 && (
+            <div className="alert alert-danger animate__animated animate__fadeIn">
+              No hero whit <b>{q}</b>
+            </div>
+          )}
+
           {heroes.map((hero) => (
             <HeroCard key={hero.id} {...hero} />
           ))}
