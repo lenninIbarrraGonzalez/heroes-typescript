@@ -1,5 +1,3 @@
-// import { HeroCard } from '../components';
-
 import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { useForm } from '../../hooks/useForm';
@@ -18,13 +16,10 @@ export const SearchPage = () => {
   //obtener información de la ubicación actual
   const location = useLocation();
   //libreria para parsear la ruta query-string
-
   const query = queryString.parse(location.search);
   const { q = '' } = query;
 
   const heroes = getHeroByName(typeof q === 'string' ? q : '');
-
-  console.log({ heroes });
 
   const { formState, onInputChange } = useForm<SearchFormState>({
     searchText: typeof q === 'string' ? q : '',
