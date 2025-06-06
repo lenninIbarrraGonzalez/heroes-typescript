@@ -1,8 +1,18 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context';
+
 export const LoginPage = () => {
   const navigator = useNavigate();
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    throw new Error('AuthContext.Provider is missing.');
+  }
+  const { login } = authContext;
 
   const onLogin = () => {
+    login('Lennin Ibarra');
+
     navigator('/', {
       replace: true,
     });

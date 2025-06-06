@@ -1,9 +1,7 @@
+import { AuthState } from './AuthState';
+
 export interface AuthContextProps {
-  logged: boolean;
-  user?: {
-    id: string;
-    name: string;
-  };
-  login: (name: string) => void;
+  authState: AuthState;
+  login: (name?: string) => void;
   logout: () => void;
 }

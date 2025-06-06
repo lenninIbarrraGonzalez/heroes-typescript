@@ -1,8 +1,18 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../../index.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../auth';
 
 export const Navbar = () => {
   const navigator = useNavigate();
+
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    throw new Error('AuthContext.Provider is missing.');
+  }
+
+  const { authState } = authContext;
+  const { user } = authState;
 
   const onLogout = () => {
     navigator('/login', {
@@ -49,7 +59,7 @@ export const Navbar = () => {
 
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
-          <span className="nav-item nav-link text-primary">Lennin Ibarra</span>
+          <span className="nav-item nav-link text-primary">{user?.name}</span>
         </ul>
         <button className="nav-item nav-link btn text-white" onClick={onLogout}>
           Logout
