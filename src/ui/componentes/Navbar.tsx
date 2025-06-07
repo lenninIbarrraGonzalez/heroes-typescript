@@ -11,10 +11,12 @@ export const Navbar = () => {
     throw new Error('AuthContext.Provider is missing.');
   }
 
-  const { authState } = authContext;
+  const { authState, logout } = authContext;
   const { user } = authState;
 
   const onLogout = () => {
+    logout();
+
     navigator('/login', {
       replace: true,
     });

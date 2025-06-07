@@ -2,11 +2,6 @@ import { AuthContext } from './AuthContext';
 import { ReactNode, useReducer } from 'react';
 import { authReducer } from './authReducer';
 import { types } from '../types/types';
-// import { AuthState } from '../interfaces/AuthState';
-
-// const initialState: AuthState = {
-//   logged: false,
-// };
 
 //funcion de inicialización
 const init = () => {
@@ -49,6 +44,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const action = {
       type: types.logout,
     };
+
+    localStorage.removeItem('user');
+
     dispatch(action);
   };
 
