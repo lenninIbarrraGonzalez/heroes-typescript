@@ -4,7 +4,7 @@ import { Hero } from '../interfaces/Hero';
 export const HeroCard = (hero: Hero) => {
   const { id, superhero, alter_ego, first_appearance, characters } = hero;
 
-  const heroImageUrl = `/assets/heroes/${id}.jpg`;
+  const heroImageUrl = `${process.env.PUBLIC_URL}/assets/heroes/${id}.jpg`;
 
   return (
     <div className="col animate__animated animate__fadeIn">
