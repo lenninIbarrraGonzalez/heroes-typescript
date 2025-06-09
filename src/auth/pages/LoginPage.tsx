@@ -12,10 +12,9 @@ export const LoginPage = () => {
 
   const onLogin = () => {
     login('Lennin Ibarra');
+    const lastPast = localStorage.getItem('lastPage');
 
-    navigator('/', {
-      replace: true,
-    });
+    navigator(lastPast || '/', { replace: true });
   };
 
   return (

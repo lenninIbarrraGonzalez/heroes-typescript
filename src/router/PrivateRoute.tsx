@@ -1,5 +1,5 @@
 import { JSX, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../auth';
 
 interface PrivateRouteProps {
@@ -7,6 +7,13 @@ interface PrivateRouteProps {
 }
 
 export const PrivateRoute = ({ children }: PrivateRouteProps): JSX.Element => {
+  const location = useLocation();
+  const { pathname, search } = location;
+
+  const lastPage = pathname + search;
+
+  localStorage.setItem('lastPage', lastPage);
+
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error('AuthContext.Provider is missing.');
