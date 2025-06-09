@@ -4,6 +4,8 @@ Esta es una Single Page Application (SPA) de héroes desarrollada con **React** 
 
 ## ![Demo de la app](/public/assets/demo/demo.gif)
 
+## [pagina demo](https://spaheroes.netlify.app/login)
+
 ## Características
 
 - **Autenticación** con rutas públicas y privadas.
